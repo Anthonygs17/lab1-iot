@@ -15,8 +15,6 @@ pinesColumnas, filas, columnas);
 int LEDROJO = 11;
 int LEDVERDE = 12;
 int LEDAMARILLO = 13;
-int LEDROJOPEATON = 5;
-int LEDVERDEPEATON = 3;
 
 int delayRojo = 10000;
 int delayVerde = 5000;
@@ -28,13 +26,9 @@ void setup() {
   pinMode(LEDROJO, OUTPUT);
   pinMode(LEDVERDE, OUTPUT);
   pinMode(LEDAMARILLO, OUTPUT);
-  pinMode(LEDROJOPEATON, OUTPUT);
-  pinMode(LEDVERDEPEATON, OUTPUT);
   digitalWrite(LEDROJO, 0);
   digitalWrite(LEDVERDE, 0);
   digitalWrite(LEDAMARILLO, 0);
-  digitalWrite(LEDROJOPEATON, 0);
-  digitalWrite(LEDVERDEPEATON, 0);
   Serial.begin(9600);
   Serial.println("Teclado 4x4 con Biblioteca Keypad");
   Serial.println();
@@ -51,24 +45,20 @@ void loop() {
   }
   
   if(hora.length() > 0){
-    if(hora.toInt() >= 16 && hora.toInt() <= 23){
+      if(hora.toInt() >= 16 && hora.toInt() <= 23){
         delayRojo*=2;
         delayAmarillo*=2;
         delayVerde*=2;
 
         digitalWrite(LEDROJO, HIGH);
-        digitalWrite(LEDVERDEPEATON, HIGH);
         delay(delayRojo);
         digitalWrite(LEDROJO, LOW);
-        digitalWrite(LEDVERDEPEATON, LOW);
         digitalWrite(LEDVERDE, HIGH);
-        digitalWrite(LEDROJOPEATON, HIGH);
         delay(delayVerde);
         digitalWrite(LEDVERDE, LOW);
         digitalWrite(LEDAMARILLO, HIGH);
         delay(delayAmarillo);
         digitalWrite(LEDAMARILLO, LOW);
-        digitalWrite(LEDROJOPEATON, LOW);
       }else if(hora.toInt() >= 0 && hora.toInt() <= 3){
         digitalWrite(LEDROJO, LOW);
         digitalWrite(LEDVERDE, LOW);
@@ -78,18 +68,14 @@ void loop() {
         delay(1000);
       }else{
         digitalWrite(LEDROJO, HIGH);
-        digitalWrite(LEDVERDEPEATON, HIGH);
         delay(delayRojo);
         digitalWrite(LEDROJO, LOW);
-        digitalWrite(LEDVERDEPEATON, LOW);
         digitalWrite(LEDVERDE, HIGH);
-        digitalWrite(LEDROJOPEATON, HIGH);
         delay(delayVerde);
         digitalWrite(LEDVERDE, LOW);
         digitalWrite(LEDAMARILLO, HIGH);
         delay(delayAmarillo);
         digitalWrite(LEDAMARILLO, LOW);
-        digitalWrite(LEDROJOPEATON, LOW);
       }
   }
   
